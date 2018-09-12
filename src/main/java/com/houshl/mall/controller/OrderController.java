@@ -1,6 +1,5 @@
 package com.houshl.mall.controller;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.houshl.mall.model.Order;
 import com.houshl.mall.response.ObjectResponse;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.xml.ws.Response;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +36,12 @@ public class OrderController {
         List<Order> orderList = orderService.findAll(order);
         PageInfo pageInfo = new PageInfo(orderList);
         return ResponseUtils.ok(pageInfo);
+    }
+
+    @RequestMapping("/info")
+    public ObjectResponse info(Long id) throws Exception {
+        Order order = orderService.findById(id);
+        return ResponseUtils.ok(order);
     }
 
 }

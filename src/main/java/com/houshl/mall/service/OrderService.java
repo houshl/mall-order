@@ -11,6 +11,6 @@ public interface OrderService {
 
     void save(Order order) throws Exception;
 
-    List<Order> findAll(Order order) throws Exception;
+    List<Order> findAll(int pageNum, int pageSize) throws Exception;
 
 }
